@@ -21,23 +21,24 @@ I've included another function, Encoding::fixUTF8(), wich will fix the double (o
 Usage:
 ======
 
-$utf8_string = Encoding::toUTF8($utf8_or_latin1_or_mixed_string);
+    $utf8_string = Encoding::toUTF8($utf8_or_latin1_or_mixed_string);
 
-$latin1_string = Encoding::toLatin1($utf8_or_latin1_or_mixed_string);
+    $latin1_string = Encoding::toLatin1($utf8_or_latin1_or_mixed_string);
 
 also:
 
-$utf8_string = Encoding::fixUTF8($garbled_utf8_string);
+    $utf8_string = Encoding::fixUTF8($garbled_utf8_string);
 
 Examples:
 
-echo Encoding::fixUTF8("FÃ©dÃ©ration Camerounaise de Football");
-echo Encoding::fixUTF8("FÃÃ©dÃÃ©ration Camerounaise de Football");
-echo Encoding::fixUTF8("FÃÃÃ©dÃÃÃ©ration Camerounaise de Football");
-echo Encoding::fixUTF8("FÃÃÃÃ©dÃÃÃÃ©ration Camerounaise de Football");
+    echo Encoding::fixUTF8("FÃ©dÃ©ration Camerounaise de Football");
+    echo Encoding::fixUTF8("FÃÃ©dÃÃ©ration Camerounaise de Football");
+    echo Encoding::fixUTF8("FÃÃÃ©dÃÃÃ©ration Camerounaise de Football");
+    echo Encoding::fixUTF8("FÃÃÃÃ©dÃÃÃÃ©ration Camerounaise de Football");
+
 will output:
 
-Fédération Camerounaise de Football
-Fédération Camerounaise de Football
-Fédération Camerounaise de Football
-Fédération Camerounaise de Football
+    Fédération Camerounaise de Football
+    Fédération Camerounaise de Football
+    Fédération Camerounaise de Football
+    Fédération Camerounaise de Football

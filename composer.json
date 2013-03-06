@@ -1,0 +1,14 @@
+{
+    "name": "neitanod/forceutf8",
+    "homepage": "https://github.com/neitanod/forceutf8",
+    "type": "library",
+    "description": "PHP Class Encoding featuring popular Encoding::toUTF8() function --formerly known as forceUTF8()-- that fixes mixed encoded strings.",
+    "require": {
+        "php": ">=5.2.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "ForceUTF8\\": "src/"
+        }
+    }
+}

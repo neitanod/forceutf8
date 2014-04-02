@@ -42,3 +42,27 @@ will output:
     Fédération Camerounaise de Football
     Fédération Camerounaise de Football
     Fédération Camerounaise de Football
+
+Composer Install:
+=================
+
+I don't want to submit this to Packagist.org unless I get requests to do so.
+
+You'll need to add a repository and require statement to your composer.json like so:
+
+```json
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/jpirkey/forceutf8"
+        }
+    ],
+
+    "require": {
+        "jpirkey/forceutf8" : "master"
+    },
+}
+
+```
+

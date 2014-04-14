@@ -229,7 +229,7 @@ class Encoding {
                   $cc2 = (($c1 & "\x3f") | "\x80");
                   $buf .= $cc1 . $cc2;
                 }
-          } else { // it doesn't need convesion
+          } else { // it doesn't need conversion
               $buf .= $c1;
           }
       }

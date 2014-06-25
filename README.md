@@ -1,7 +1,7 @@
 forceutf8
 =========
 
-PHP Class Encoding featuring popular Encoding::toUTF8() function --formerly known as forceUTF8()-- that fixes mixed encoded strings.
+PHP Class Encoding featuring popular \ForceUTF8\Encoding::toUTF8() function --formerly known as forceUTF8()-- that fixes mixed encoded strings.
 
 Description
 ===========
@@ -21,20 +21,20 @@ I've included another function, Encoding::fixUTF8(), which will fix the double (
 Usage:
 ======
 
-    $utf8_string = Encoding::toUTF8($utf8_or_latin1_or_mixed_string);
+    $utf8_string = \ForceUTF8\Encoding::toUTF8($utf8_or_latin1_or_mixed_string);
 
     $latin1_string = Encoding::toLatin1($utf8_or_latin1_or_mixed_string);
 
 also:
 
-    $utf8_string = Encoding::fixUTF8($garbled_utf8_string);
+    $utf8_string = \ForceUTF8\Encoding::fixUTF8($garbled_utf8_string);
 
 Examples:
 
-    echo Encoding::fixUTF8("FÃ©dÃ©ration Camerounaise de Football");
-    echo Encoding::fixUTF8("FÃÃ©dÃÃ©ration Camerounaise de Football");
-    echo Encoding::fixUTF8("FÃÃÃ©dÃÃÃ©ration Camerounaise de Football");
-    echo Encoding::fixUTF8("FÃÃÃÃ©dÃÃÃÃ©ration Camerounaise de Football");
+    echo \ForceUTF8\Encoding::fixUTF8("FÃ©dÃ©ration Camerounaise de Football");
+    echo \ForceUTF8\Encoding::fixUTF8("FÃÃ©dÃÃ©ration Camerounaise de Football");
+    echo \ForceUTF8\Encoding::fixUTF8("FÃÃÃ©dÃÃÃ©ration Camerounaise de Football");
+    echo \ForceUTF8\Encoding::fixUTF8("FÃÃÃÃ©dÃÃÃÃ©ration Camerounaise de Football");
 
 will output:
 

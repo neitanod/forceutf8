@@ -6,6 +6,12 @@
     "require": {
         "php": ">=5.2.0"
     },
+    "authors": [
+        {
+            "name":  "Sebastián Grignoli",
+            "email": "grignoli@gmail.com"
+        }
+    ],
     "autoload": {
         "psr-0": {
             "ForceUTF8\\": "src/"

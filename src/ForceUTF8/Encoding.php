@@ -180,8 +180,13 @@ class Encoding {
       }
       return $text;
     } elseif(is_string($text)) {
+       
+      if ( function_exists('mb_strlen') && ((int) ini_get('mbstring.func_overload')) & 2) {
+         $max = mb_strlen($text,'8bit');
+      } else {
+         $max = strlen($text);
+      }
     
-      $max = strlen($text);
       $buf = "";
       for($i = 0; $i < $max; $i++){
           $c1 = $text{$i};

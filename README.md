@@ -42,3 +42,22 @@ will output:
     Fédération Camerounaise de Football
     Fédération Camerounaise de Football
     Fédération Camerounaise de Football
+
+Install via composer:
+=====================
+Edit your composer.json file to include the following:
+
+```json
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/neitanod/forceutf8"
+        }
+    ],
+    
+    "require" : {
+        "neitanod/forceutf8" : "master"
+    }
+}
+```

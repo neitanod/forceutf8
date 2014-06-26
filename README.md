@@ -49,15 +49,8 @@ Edit your composer.json file to include the following:
 
 ```json
 {
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/neitanod/forceutf8"
-        }
-    ],
-    
-    "require" : {
-        "neitanod/forceutf8" : "master"
+    "require": {
+        "neitanod/forceutf8": "dev-master"
     }
 }
 ```

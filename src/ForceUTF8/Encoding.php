@@ -214,8 +214,8 @@ class Encoding {
                   }
               } elseif($c1 >= "\xf0" & $c1 <= "\xf7"){ //looks like 4 bytes UTF8
                   if($c2 >= "\x80" && $c2 <= "\xbf" && $c3 >= "\x80" && $c3 <= "\xbf" && $c4 >= "\x80" && $c4 <= "\xbf"){ //yeah, almost sure it's UTF8 already
-                      $buf .= $c1 . $c2 . $c3;
-                      $i = $i + 2;
+                      $buf .= $c1 . $c2 . $c3 . $c4;
+                      $i = $i + 3;
                   } else { //not valid UTF8.  Convert it.
                       $cc1 = (chr(ord($c1) / 64) | "\xc0");
                       $cc2 = ($c1 & "\x3f") | "\x80";

@@ -1,5 +1,5 @@
 {
-    "name": "jpirkey/forceutf8",
+    "name": "tave/forceutf8",
     "homepage": "https://github.com/jpirkey/forceutf8",
     "type": "library",
     "description": "PHP Class Encoding featuring popular Encoding::toUTF8() function --formerly known as forceUTF8()-- that fixes mixed encoded strings.",

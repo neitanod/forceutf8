@@ -34,9 +34,11 @@ Examples:
     echo \ForceUTF8\Encoding::fixUTF8("FÃÂ©dération Camerounaise de Football\n");
     echo \ForceUTF8\Encoding::fixUTF8("FÃ©dÃ©ration Camerounaise de Football\n");
     echo \ForceUTF8\Encoding::fixUTF8("FÃÂ©dÃÂ©ration Camerounaise de Football\n");
+    echo \ForceUTF8\Encoding::fixUTF8("FÃÂÂÂÂ©dÃÂÂÂÂ©ration Camerounaise de Football\n");
 
 will output:
 
+    Fédération Camerounaise de Football
     Fédération Camerounaise de Football
     Fédération Camerounaise de Football
     Fédération Camerounaise de Football

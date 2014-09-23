@@ -31,14 +31,12 @@ also:
 
 Examples:
 
-    echo \ForceUTF8\Encoding::fixUTF8("FÃ©dÃ©ration Camerounaise de Football");
-    echo \ForceUTF8\Encoding::fixUTF8("FÃÃ©dÃÃ©ration Camerounaise de Football");
-    echo \ForceUTF8\Encoding::fixUTF8("FÃÃÃ©dÃÃÃ©ration Camerounaise de Football");
-    echo \ForceUTF8\Encoding::fixUTF8("FÃÃÃÃ©dÃÃÃÃ©ration Camerounaise de Football");
+    echo \ForceUTF8\Encoding::fixUTF8("FÃÂ©dération Camerounaise de Football\n");
+    echo \ForceUTF8\Encoding::fixUTF8("FÃ©dÃ©ration Camerounaise de Football\n");
+    echo \ForceUTF8\Encoding::fixUTF8("FÃÂ©dÃÂ©ration Camerounaise de Football\n");
 
 will output:
 
-    Fédération Camerounaise de Football
     Fédération Camerounaise de Football
     Fédération Camerounaise de Football
     Fédération Camerounaise de Football
@@ -61,3 +59,5 @@ Edit your composer.json file to include the following:
     }
 }
 ```
+=======
+>>>>>>> Stashed changes

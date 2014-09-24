@@ -29,9 +29,9 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 
 /**
- * @author   "Sebastián Grignoli" <grignoli@framework2.com.ar>
+ * @author   "Sebastián Grignoli" <grignoli@gmail.com>
  * @package  Encoding
- * @version  1.2
+ * @version  1.4
  * @link     https://github.com/neitanod/forceutf8
  * @example  https://github.com/neitanod/forceutf8
  * @license  Revised BSD
@@ -148,7 +148,7 @@ class Encoding {
 
   static function toUTF8($text){
   /**
-   * Function Encoding::toUTF8
+   * Function \ForceUTF8\Encoding::toUTF8
    *
    * This function leaves UTF8 characters alone, while converting almost all non-UTF8 to UTF8.
    * 
@@ -251,7 +251,7 @@ class Encoding {
       }
       return $text;
     } elseif(is_string($text)) {
-      return utf8_decode(str_replace(array_keys(self::$utf8ToWin1252), array_values(self::$utf8ToWin1252), self::toUTF8($text)));
+      return static::utf8_decode($text);
     } else {
       return $text;
     }
@@ -276,9 +276,9 @@ class Encoding {
     $last = "";
     while($last <> $text){
       $last = $text;
-      $text = self::toUTF8(utf8_decode(str_replace(array_keys(self::$utf8ToWin1252), array_values(self::$utf8ToWin1252), $text)));
+      $text = self::toUTF8(static::utf8_decode($text));
     }
-    $text = self::toUTF8(utf8_decode(str_replace(array_keys(self::$utf8ToWin1252), array_values(self::$utf8ToWin1252), $text)));
+    $text = self::toUTF8(static::utf8_decode($text));
     return $text;
   }
   
@@ -327,4 +327,12 @@ class Encoding {
     if($encodingLabel == 'ISO-8859-1') return Encoding::toLatin1($text);
   }
 
+  protected static function utf8_decode($text)
+  {
+    // $o = utf8_decode(
+    //   str_replace(array_keys(self::$utf8ToWin1252), array_values(self::$utf8ToWin1252), self::toUTF8($text))
+    // );
+    $o = iconv("UTF-8", "Windows-1252//TRANSLIT", $text);
+    return $o;
+  }
 }

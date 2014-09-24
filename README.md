@@ -54,5 +54,4 @@ Edit your composer.json file to include the following:
     }
 }
 ```
-=======
->>>>>>> Stashed changes
+

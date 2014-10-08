@@ -50,7 +50,7 @@ Edit your composer.json file to include the following:
 ```json
 {
     "require": {
-        "neitanod/forceutf8": "dev-master"
+        "neitanod/forceutf8": "1.*" 
     }
 }
 ```

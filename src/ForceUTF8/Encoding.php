@@ -248,14 +248,14 @@ class Encoding {
     }
   }
 
-  static function toWin1252($text) {
+  static function toWin1252($text, $option = self::WITHOUT_ICONV) {
     if(is_array($text)) {
       foreach($text as $k => $v) {
-        $text[$k] = self::toWin1252($v);
+        $text[$k] = self::toWin1252($v, $option);
       }
       return $text;
     } elseif(is_string($text)) {
-      return static::utf8_decode($text);
+      return static::utf8_decode($text, $option);
     } else {
       return $text;
     }

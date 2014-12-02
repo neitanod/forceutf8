@@ -2,7 +2,7 @@
 require_once(dirname(__FILE__)."/Test.class.php");
 require_once(dirname(dirname(__FILE__))."/src/ForceUTF8/Encoding.php");
 
-use ForceUTF8\Encoding;
+use \ForceUTF8\Encoding;
 
 // Test the testing class itself.
 Test::is("'yes' is true", 'yes', true);

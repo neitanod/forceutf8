@@ -21,20 +21,24 @@ I've included another function, \ForceUTF8\Encoding::fixUTF8(), which will fix t
 Usage:
 ======
 
-    $utf8_string = \ForceUTF8\Encoding::toUTF8($utf8_or_latin1_or_mixed_string);
+    use \ForceUTF8\Encoding;
 
-    $latin1_string = \ForceUTF8\Encoding::toLatin1($utf8_or_latin1_or_mixed_string);
+    $utf8_string = Encoding::toUTF8($utf8_or_latin1_or_mixed_string);
+
+    $latin1_string = Encoding::toLatin1($utf8_or_latin1_or_mixed_string);
 
 also:
 
-    $utf8_string = \ForceUTF8\Encoding::fixUTF8($garbled_utf8_string);
+    $utf8_string = Encoding::fixUTF8($garbled_utf8_string);
 
 Examples:
 
-    echo \ForceUTF8\Encoding::fixUTF8("FÃÂ©dération Camerounaise de Football\n");
-    echo \ForceUTF8\Encoding::fixUTF8("FÃ©dÃ©ration Camerounaise de Football\n");
-    echo \ForceUTF8\Encoding::fixUTF8("FÃÂ©dÃÂ©ration Camerounaise de Football\n");
-    echo \ForceUTF8\Encoding::fixUTF8("FÃÂÂÂÂ©dÃÂÂÂÂ©ration Camerounaise de Football\n");
+    use \ForceUTF8\Encoding;
+
+    echo Encoding::fixUTF8("FÃÂ©dération Camerounaise de Football\n");
+    echo Encoding::fixUTF8("FÃ©dÃ©ration Camerounaise de Football\n");
+    echo Encoding::fixUTF8("FÃÂ©dÃÂ©ration Camerounaise de Football\n");
+    echo Encoding::fixUTF8("FÃÂÂÂÂ©dÃÂÂÂÂ©ration Camerounaise de Football\n");
 
 will output:
 

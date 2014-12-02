@@ -189,11 +189,7 @@ class Encoding {
       return $text;
     }
        
-    if ( function_exists('mb_strlen') && ((int) ini_get('mbstring.func_overload')) & 2) {
-        $max = mb_strlen($text,'8bit');
-    } else {
-        $max = strlen($text);
-    }
+    $max = self::strlen($text);
   
     $buf = "";
     for($i = 0; $i < $max; $i++){
@@ -300,6 +296,11 @@ class Encoding {
       $str=substr($str, 3);
     }
     return $str;
+  }
+
+  protected static function strlen($text){
+    return (function_exists('mb_strlen') && ((int) ini_get('mbstring.func_overload')) & 2) ?
+           mb_strlen($text,'8bit') : strlen($text);
   }
 
   public static function normalizeEncoding($encodingLabel)

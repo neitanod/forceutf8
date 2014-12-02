@@ -85,4 +85,17 @@ function test_double_encoded_arrays_fix(){
 Test::true("Source arrays are different (fixUTF8).", test_double_encoded_arrays_are_different());
 Test::true("Fixing of double encoded array works.", test_double_encoded_arrays_fix());
 
+Test::identical("fixUTF8() Example 1 still working.", 
+  Encoding::fixUTF8("FÃÂ©dération Camerounaise de Football\n"), 
+  "Fédération Camerounaise de Football\n");
+Test::identical("fixUTF8() Example 2 still working.", 
+  Encoding::fixUTF8("FÃ©dÃ©ration Camerounaise de Football\n"), 
+  "Fédération Camerounaise de Football\n");
+Test::identical("fixUTF8() Example 3 still working.", 
+  Encoding::fixUTF8("FÃÂ©dÃÂ©ration Camerounaise de Football\n"), 
+  "Fédération Camerounaise de Football\n");
+Test::identical("fixUTF8() Example 4 still working.", 
+  Encoding::fixUTF8("FÃÂÂÂÂ©dÃÂÂÂÂ©ration Camerounaise de Football\n"), 
+  "Fédération Camerounaise de Football\n");
+
 Test::totals();

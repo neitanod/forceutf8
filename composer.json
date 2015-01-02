@@ -4,7 +4,7 @@
     "type": "library",
     "description": "PHP Class Encoding featuring popular Encoding::toUTF8() function --formerly known as forceUTF8()-- that fixes mixed encoded strings.",
     "require": {
-        "php": ">=5.2.0"
+        "php": ">=5.3.0"
     },
     "authors": [
         {

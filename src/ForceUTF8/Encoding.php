@@ -328,9 +328,14 @@ class Encoding {
 
   public static function encode($encodingLabel, $text)
   {
-    $encodingLabel = self::normalizeEncoding($encodingLabel);
-    if($encodingLabel == 'UTF-8') return Encoding::toUTF8($text);
-    if($encodingLabel == 'ISO-8859-1') return Encoding::toLatin1($text);
+     // map the encodings to their own handler methods
+	  $map = array(
+		  'UTF-8' => 'toUTF8',
+		  'ISO-8859-1' => 'toLatin1'
+	  );
+	  // choose the apprpriate method based on the current encoding
+	  $processor = $map[self::normalizeEncoding($encodingLabel)];
+	  return Encoding::$processor($text);
   }
 
   protected static function utf8_decode($text, $option)

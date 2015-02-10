@@ -1,5 +1,4 @@
-  <?php 
-  
+<?php
   class Test {
     protected static $passed = 0;
     protected static $failed = 0;
@@ -8,7 +7,7 @@
     public static function true($test_name, $result){
       return static::is($test_name, $result, TRUE);
     }
-    
+
     public static function is($test_name, $result, $expected){
       if($result == $expected) {
         static::passed($test_name);
@@ -16,7 +15,7 @@
         static::failed($test_name);
       }
     }
-    
+
     public static function not($test_name, $result, $expected){
       if($result == $expected) {
         static::failed($test_name);
@@ -48,15 +47,15 @@
       static::character(".");
       static::$passed++;
     }
-    
+
     private static function character($char){
-      echo $char; 
+      echo $char;
       static::$last_echoed = 'char';
     }
 
     private static function line($msg){
       if(static::$last_echoed == 'char') echo "\n";
-      echo $msg."\n"; 
+      echo $msg."\n";
       static::$last_echoed = 'line';
     }
   }

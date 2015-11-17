@@ -41,17 +41,10 @@ namespace ForceUTF8;
 
 class Encoding {
 
-  /**
-   *
-   */
   const ICONV_TRANSLIT = "TRANSLIT";
-  /**
-   *
-   */
+
   const ICONV_IGNORE = "IGNORE";
-  /**
-   *
-   */
+
   const WITHOUT_ICONV = "";
 
   /**

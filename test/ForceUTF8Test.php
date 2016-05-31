@@ -10,6 +10,9 @@ Test::not("1 is not false", 1, false);
 Test::identical("true is identical to true", true, true);
 Test::true("1 is true", 1);
 
+Test::true("UTF-8 should be correct encoding", Encoding::isValid('UTF-8'));
+Test::false("UTF-NOT-8 shouldn't be correct encoding", Encoding::isValid('UTF-NOT-8'));
+
 // ForceUTF8 tests.
 Test::not("Source files must not use the same encoding before conversion.",
   file_get_contents(dirname(__FILE__)."/data/test1.txt"),

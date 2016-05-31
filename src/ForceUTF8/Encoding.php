@@ -45,6 +45,8 @@ class Encoding {
   const ICONV_IGNORE = "IGNORE";
   const WITHOUT_ICONV = "";
 
+    protected static $encodingList = array();
+    
   protected static $win1252ToUtf8 = array(
         128 => "\xe2\x82\xac",
 
@@ -80,7 +82,7 @@ class Encoding {
         159 => "\xc5\xb8"
   );
 
-    protected static $brokenUtf8ToUtf8 = array(
+  protected static $brokenUtf8ToUtf8 = array(
         "\xc2\x80" => "\xe2\x82\xac",
 
         "\xc2\x82" => "\xe2\x80\x9a",
@@ -150,6 +152,30 @@ class Encoding {
        "\xc5\xb8"     => "\x9f"
     );
 
+    /**
+     * Verifies whether given $encoding is correct or not
+     * 
+     * @param string $encoding Encoding name
+     * @return bool
+     */  
+    public static function isValid($encoding)
+    {
+        return in_array($encoding, self::getEncodingList());
+    }
+    
+    protected static function &getEncodingList()
+    {
+        if(!self::$encodingList)
+        {
+            if(!function_exists('mb_list_encodings')) {
+                throw new \BadFunctionCallException('mbstring library is required');
+            }
+            self::$encodingList = mb_list_encodings();
+        }
+        
+        return self::$encodingList;
+    }
+    
   static function toUTF8($text){
   /**
    * Function \ForceUTF8\Encoding::toUTF8

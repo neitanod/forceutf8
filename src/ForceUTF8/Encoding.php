@@ -162,11 +162,15 @@ class Encoding {
     {
         return in_array($encoding, self::getEncodingList());
     }
-    
+
+    /**
+     * Returns list of encodings that mbstring extension can handle
+     * 
+     * @return array Reference to internal array of available encodings
+     */
     protected static function &getEncodingList()
     {
-        if(!self::$encodingList)
-        {
+        if(!self::$encodingList) {
             if(!function_exists('mb_list_encodings')) {
                 throw new \BadFunctionCallException('mbstring library is required');
             }

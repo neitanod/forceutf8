@@ -55,12 +55,12 @@ You'll need to add a repository and require statement to your composer.json like
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/jpirkey/forceutf8"
+            "url": "https://github.com/tave/forceutf8"
         }
     ],
 
     "require": {
-        "jpirkey/forceutf8" : "master"
+        "tave/forceutf8" : "master"
     },
 }
 

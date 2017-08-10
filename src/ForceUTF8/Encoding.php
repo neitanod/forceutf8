@@ -354,11 +354,12 @@ class Encoding {
   {
       foreach ($array as $key => $value) {
           if (is_array($value))
-              $value = fixUTF8Array($value);
+              $value = self::fixUTF8Array($value);
           else
-              $value = Encoding::fixUTF8($value);
-           $array[$key] = $value;
+              $value = self::fixUTF8($value);
+
+          $array[self::fixUTF8($key)] = $value;
       }
       return $array;
-   }
+  }
 }

@@ -344,4 +344,21 @@ class Encoding {
     }
     return $o;
   }
+  /**
+  * @param $array
+  * @return mixed
+  *
+  * This Method fix all utf8 array
+  */
+  public static function fixUTF8Array($array)
+  {
+      foreach ($array as $key => $value) {
+          if (is_array($value))
+              $value = fixUTF8Array($value);
+          else
+              $value = Encoding::fixUTF8($value);
+           $array[$key] = $value;
+      }
+      return $array;
+   }
 }

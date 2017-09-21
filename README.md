@@ -62,4 +62,5 @@ Edit your composer.json file to include the following:
 Tips:
 =====
 You can tip me with Bitcoin if you want. :)
-<img src="resources/wallet.jpg" width="450" alt="1Awfu4TZpy99H7Pyzt1mooxU1aP2mJVdHP">
+
+<img src="resources/wallet.jpg" width="225" alt="1Awfu4TZpy99H7Pyzt1mooxU1aP2mJVdHP">

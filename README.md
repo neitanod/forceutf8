@@ -59,3 +59,7 @@ Edit your composer.json file to include the following:
 }
 ```
 
+Tips:
+=====
+You can tip me with Bitcoin if you want. :)
+![1Awfu4TZpy99H7Pyzt1mooxU1aP2mJVdHP](resources/wallet.jpg "1Awfu4TZpy99H7Pyzt1mooxU1aP2mJVdHP")

@@ -350,15 +350,15 @@ class Encoding {
   *
   * This Method fix all utf8 array
   */
-  public static function fixUTF8Array($array)
+  public static function fixUTF8Array($array, $option = self::WITHOUT_ICONV)
   {
       foreach ($array as $key => $value) {
           if (is_array($value))
-              $value = self::fixUTF8Array($value);
+              $value = self::fixUTF8Array($value, $option);
           else
-              $value = self::fixUTF8($value);
+              $value = self::fixUTF8($value, $option);
 
-          $array[self::fixUTF8($key)] = $value;
+          $array[self::fixUTF8($key, $option)] = $value;
       }
       return $array;
   }

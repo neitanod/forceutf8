@@ -274,6 +274,10 @@ class Encoding {
       return $text;
     }
 
+    if(!is_string($text)) {
+      return $text;
+    }
+
     $last = "";
     while($last <> $text){
       $last = $text;

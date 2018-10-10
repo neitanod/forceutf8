@@ -42,9 +42,14 @@ namespace ForceUTF8;
 class Encoding {
 
   const ICONV_TRANSLIT = "TRANSLIT";
+
   const ICONV_IGNORE = "IGNORE";
+
   const WITHOUT_ICONV = "";
 
+  /**
+   * @var array
+   */
   protected static $win1252ToUtf8 = array(
         128 => "\xe2\x82\xac",
 
@@ -80,7 +85,10 @@ class Encoding {
         159 => "\xc5\xb8"
   );
 
-    protected static $brokenUtf8ToUtf8 = array(
+  /**
+   * @var array
+   */
+  protected static $brokenUtf8ToUtf8 = array(
         "\xc2\x80" => "\xe2\x82\xac",
 
         "\xc2\x82" => "\xe2\x80\x9a",
@@ -115,6 +123,9 @@ class Encoding {
         "\xc2\x9f" => "\xc5\xb8"
   );
 
+  /**
+   * @var array
+   */
   protected static $utf8ToWin1252 = array(
        "\xe2\x82\xac" => "\x80",
 
@@ -150,6 +161,10 @@ class Encoding {
        "\xc5\xb8"     => "\x9f"
     );
 
+  /**
+   * @param string $text
+   * @return array|string
+   */
   static function toUTF8($text){
   /**
    * Function \ForceUTF8\Encoding::toUTF8
@@ -245,6 +260,11 @@ class Encoding {
     return $buf;
   }
 
+  /**
+   * @param string $text
+   * @param string $option
+   * @return array|string
+   */
   static function toWin1252($text, $option = self::WITHOUT_ICONV) {
     if(is_array($text)) {
       foreach($text as $k => $v) {
@@ -258,14 +278,27 @@ class Encoding {
     }
   }
 
+  /**
+   * @param string $text
+   * @return array|string
+   */
   static function toISO8859($text) {
     return self::toWin1252($text);
   }
 
+  /**
+   * @param string $text
+   * @return array|string
+   */
   static function toLatin1($text) {
     return self::toWin1252($text);
   }
 
+  /**
+   * @param string $text
+   * @param string $option
+   * @return array|string
+   */
   static function fixUTF8($text, $option = self::WITHOUT_ICONV){
     if(is_array($text)) {
       foreach($text as $k => $v) {
@@ -287,6 +320,10 @@ class Encoding {
     return $text;
   }
 
+  /**
+   * @param string $text
+   * @return mixed
+   */
   static function UTF8FixWin1252Chars($text){
     // If you received an UTF-8 string that was converted from Windows-1252 as it was ISO8859-1
     // (ignoring Windows-1252 chars from 80 to 9F) use this function to fix it.
@@ -295,6 +332,10 @@ class Encoding {
     return str_replace(array_keys(self::$brokenUtf8ToUtf8), array_values(self::$brokenUtf8ToUtf8), $text);
   }
 
+  /**
+   * @param string $str
+   * @return string
+   */
   static function removeBOM($str=""){
     if(substr($str, 0,3) == pack("CCC",0xef,0xbb,0xbf)) {
       $str=substr($str, 3);
@@ -302,11 +343,19 @@ class Encoding {
     return $str;
   }
 
+  /**
+   * @param string $text
+   * @return int
+   */
   protected static function strlen($text){
     return (function_exists('mb_strlen') && ((int) ini_get('mbstring.func_overload')) & 2) ?
            mb_strlen($text,'8bit') : strlen($text);
   }
 
+  /**
+   * @param string $encodingLabel
+   * @return string
+   */
   public static function normalizeEncoding($encodingLabel)
   {
     $encoding = strtoupper($encodingLabel);
@@ -330,6 +379,11 @@ class Encoding {
     return $equivalences[$encoding];
   }
 
+  /**
+   * @param string $encodingLabel
+   * @param string $text
+   * @return array|string
+   */
   public static function encode($encodingLabel, $text)
   {
     $encodingLabel = self::normalizeEncoding($encodingLabel);
@@ -337,6 +391,11 @@ class Encoding {
     return self::toUTF8($text);
   }
 
+  /**
+   * @param string $text
+   * @param string $option
+   * @return string
+   */
   protected static function utf8_decode($text, $option)
   {
     if ($option == self::WITHOUT_ICONV || !function_exists('iconv')) {

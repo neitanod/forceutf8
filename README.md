@@ -46,6 +46,27 @@ will output:
     Fédération Camerounaise de Football
     Fédération Camerounaise de Football
     Fédération Camerounaise de Football
+    
+Options:
+========
+By default, `Encoding::fixUTF8` will use the `Encoding::WITHOUT_ICONV` flag, signalling that iconv should not be used to fix garbled UTF8 strings.
+
+This class also provides options for iconv processing, such as `Encoding::ICONV_TRANSLIT` and `Encoding::ICONV_IGNORE` to enable these flags when the iconv class is utilized. The functionality of such flags are documented in the [PHP iconv documentation](http://php.net/manual/en/function.iconv.php).
+
+Examples:
+
+    use \ForceUTF8\Encoding;
+    
+    $str = "FÃÂ©dération Camerounaise—de—Football\n"; // Uses U+2014 which is invalid
+    echo Encoding::fixUTF8($str, Encoding::ICONV_TRANSLIT);
+    echo Encoding::fixUTF8($str, Encoding::ICONV_TRANSLIT);
+    echo Encoding::fixUTF8($str);
+    
+will output:
+
+    Fédération Camerounaise?de?Football
+    Fédération Camerounaise—de—Football
+    Fédération Camerounaise—de—Football
 
 Install via composer:
 =====================

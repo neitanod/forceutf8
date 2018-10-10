@@ -183,14 +183,14 @@ class Encoding {
         $text[$k] = self::toUTF8($v);
       }
       return $text;
-    } 
-    
+    }
+
     if(!is_string($text)) {
       return $text;
     }
-       
+
     $max = self::strlen($text);
-  
+
     $buf = "";
     for($i = 0; $i < $max; $i++){
         $c1 = $text{$i};
@@ -258,12 +258,12 @@ class Encoding {
     }
   }
 
-  static function toISO8859($text) {
-    return self::toWin1252($text);
+  static function toISO8859($text, $option = self::WITHOUT_ICONV) {
+    return self::toWin1252($text, $option);
   }
 
-  static function toLatin1($text) {
-    return self::toWin1252($text);
+  static function toLatin1($text, $option = self::WITHOUT_ICONV) {
+    return self::toWin1252($text, $option);
   }
 
   static function fixUTF8($text, $option = self::WITHOUT_ICONV){
@@ -337,7 +337,7 @@ class Encoding {
     return self::toUTF8($text);
   }
 
-  protected static function utf8_decode($text, $option)
+  protected static function utf8_decode($text, $option = self::WITHOUT_ICONV)
   {
     if ($option == self::WITHOUT_ICONV || !function_exists('iconv')) {
        $o = utf8_decode(

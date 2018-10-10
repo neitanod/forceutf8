@@ -58,9 +58,9 @@ Examples:
     use \ForceUTF8\Encoding;
     
     $str = "FÃÂ©dération Camerounaise—de—Football\n"; // Uses U+2014 which is invalid
+    echo Encoding::fixUTF8($str); // Breaks invalid char (U+2014)
     echo Encoding::fixUTF8($str, Encoding::ICONV_TRANSLIT);
     echo Encoding::fixUTF8($str, Encoding::ICONV_TRANSLIT);
-    echo Encoding::fixUTF8($str);
     
 will output:
 

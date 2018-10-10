@@ -1,6 +1,7 @@
 {
     "name": "neitanod/forceutf8",
     "homepage": "https://github.com/neitanod/forceutf8",
+    "license": "BSD-3-Clause",
     "type": "library",
     "description": "PHP Class Encoding featuring popular Encoding::toUTF8() function --formerly known as forceUTF8()-- that fixes mixed encoded strings.",
     "require": {

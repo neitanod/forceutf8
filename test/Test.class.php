@@ -8,6 +8,10 @@
       return static::is($test_name, $result, TRUE);
     }
 
+    public static function false($test_name, $result) {
+      return static::is($test_name, $result, FALSE);
+    }
+    
     public static function is($test_name, $result, $expected){
       if($result == $expected) {
         static::passed($test_name);

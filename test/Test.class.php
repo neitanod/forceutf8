@@ -5,7 +5,7 @@
     protected static $last_echoed;
 
     public static function true($test_name, $result){
-      return static::is($test_name, $result, TRUE);
+      return static::is($test_name, $result, true);
     }
 
     public static function is($test_name, $result, $expected){

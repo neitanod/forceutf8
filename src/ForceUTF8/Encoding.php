@@ -176,7 +176,7 @@ class Encoding {
    *
    */
 
-    if(is_array($text))
+    if(\is_array($text))
     {
       foreach($text as $k => $v)
       {
@@ -185,7 +185,7 @@ class Encoding {
       return $text;
     }
 
-    if(!is_string($text)) {
+    if(!\is_string($text)) {
       return $text;
     }
 
@@ -203,7 +203,7 @@ class Encoding {
                     $buf .= $c1 . $c2;
                     $i++;
                 } else { //not valid UTF8.  Convert it.
-                    $cc1 = (chr(ord($c1) / 64) | "\xc0");
+                    $cc1 = (\chr(\ord($c1) / 64) | "\xc0");
                     $cc2 = ($c1 & "\x3f") | "\x80";
                     $buf .= $cc1 . $cc2;
                 }
@@ -212,7 +212,7 @@ class Encoding {
                     $buf .= $c1 . $c2 . $c3;
                     $i = $i + 2;
                 } else { //not valid UTF8.  Convert it.
-                    $cc1 = (chr(ord($c1) / 64) | "\xc0");
+                    $cc1 = (\chr(\ord($c1) / 64) | "\xc0");
                     $cc2 = ($c1 & "\x3f") | "\x80";
                     $buf .= $cc1 . $cc2;
                 }
@@ -221,20 +221,20 @@ class Encoding {
                     $buf .= $c1 . $c2 . $c3 . $c4;
                     $i = $i + 3;
                 } else { //not valid UTF8.  Convert it.
-                    $cc1 = (chr(ord($c1) / 64) | "\xc0");
+                    $cc1 = (\chr(\ord($c1) / 64) | "\xc0");
                     $cc2 = ($c1 & "\x3f") | "\x80";
                     $buf .= $cc1 . $cc2;
                 }
             } else { //doesn't look like UTF8, but should be converted
-                    $cc1 = (chr(ord($c1) / 64) | "\xc0");
+                    $cc1 = (\chr(\ord($c1) / 64) | "\xc0");
                     $cc2 = (($c1 & "\x3f") | "\x80");
                     $buf .= $cc1 . $cc2;
             }
         } elseif(($c1 & "\xc0") == "\x80"){ // needs conversion
-              if(isset(self::$win1252ToUtf8[ord($c1)])) { //found in Windows-1252 special cases
-                  $buf .= self::$win1252ToUtf8[ord($c1)];
+              if(isset(self::$win1252ToUtf8[\ord($c1)])) { //found in Windows-1252 special cases
+                  $buf .= self::$win1252ToUtf8[\ord($c1)];
               } else {
-                $cc1 = (chr(ord($c1) / 64) | "\xc0");
+                $cc1 = (\chr(\ord($c1) / 64) | "\xc0");
                 $cc2 = (($c1 & "\x3f") | "\x80");
                 $buf .= $cc1 . $cc2;
               }
@@ -246,12 +246,12 @@ class Encoding {
   }
 
   static function toWin1252($text, $option = self::WITHOUT_ICONV) {
-    if(is_array($text)) {
+    if(\is_array($text)) {
       foreach($text as $k => $v) {
         $text[$k] = self::toWin1252($v, $option);
       }
       return $text;
-    } elseif(is_string($text)) {
+    } elseif(\is_string($text)) {
       return static::utf8_decode($text, $option);
     } else {
       return $text;
@@ -267,14 +267,14 @@ class Encoding {
   }
 
   static function fixUTF8($text, $option = self::WITHOUT_ICONV){
-    if(is_array($text)) {
+    if(\is_array($text)) {
       foreach($text as $k => $v) {
         $text[$k] = self::fixUTF8($v, $option);
       }
       return $text;
     }
 
-    if(!is_string($text)) {
+    if(!\is_string($text)) {
       return $text;
     }
 
@@ -292,25 +292,25 @@ class Encoding {
     // (ignoring Windows-1252 chars from 80 to 9F) use this function to fix it.
     // See: http://en.wikipedia.org/wiki/Windows-1252
 
-    return str_replace(array_keys(self::$brokenUtf8ToUtf8), array_values(self::$brokenUtf8ToUtf8), $text);
+    return \str_replace(\array_keys(self::$brokenUtf8ToUtf8), \array_values(self::$brokenUtf8ToUtf8), $text);
   }
 
   static function removeBOM($str=""){
-    if(substr($str, 0,3) == pack("CCC",0xef,0xbb,0xbf)) {
-      $str=substr($str, 3);
+    if(\substr($str, 0,3) == \pack("CCC",0xef,0xbb,0xbf)) {
+      $str=\substr($str, 3);
     }
     return $str;
   }
 
   protected static function strlen($text){
-    return (function_exists('mb_strlen') && ((int) ini_get('mbstring.func_overload')) & 2) ?
-           mb_strlen($text,'8bit') : strlen($text);
+    return (\function_exists('mb_strlen') && ((int) \ini_get('mbstring.func_overload')) & 2) ?
+           \mb_strlen($text,'8bit') : \strlen($text);
   }
 
   public static function normalizeEncoding($encodingLabel)
   {
-    $encoding = strtoupper($encodingLabel);
-    $encoding = preg_replace('/[^a-zA-Z0-9\s]/', '', $encoding);
+    $encoding = \strtoupper($encodingLabel);
+    $encoding = \preg_replace('/[^a-zA-Z0-9\s]/', '', $encoding);
     $equivalences = array(
         'ISO88591' => 'ISO-8859-1',
         'ISO8859'  => 'ISO-8859-1',
@@ -339,12 +339,12 @@ class Encoding {
 
   protected static function utf8_decode($text, $option = self::WITHOUT_ICONV)
   {
-    if ($option == self::WITHOUT_ICONV || !function_exists('iconv')) {
-       $o = utf8_decode(
-         str_replace(array_keys(self::$utf8ToWin1252), array_values(self::$utf8ToWin1252), self::toUTF8($text))
+    if ($option == self::WITHOUT_ICONV || !\function_exists('iconv')) {
+       $o = \utf8_decode(
+         \str_replace(\array_keys(self::$utf8ToWin1252), \array_values(self::$utf8ToWin1252), self::toUTF8($text))
        );
     } else {
-       $o = iconv("UTF-8", "Windows-1252" . ($option == self::ICONV_TRANSLIT ? '//TRANSLIT' : ($option == self::ICONV_IGNORE ? '//IGNORE' : '')), $text);
+       $o = \iconv("UTF-8", "Windows-1252" . ($option == self::ICONV_TRANSLIT ? '//TRANSLIT' : ($option == self::ICONV_IGNORE ? '//IGNORE' : '')), $text);
     }
     return $o;
   }

@@ -193,11 +193,11 @@ class Encoding {
 
     $buf = "";
     for($i = 0; $i < $max; $i++){
-        $c1 = $text{$i};
+        $c1 = $text[$i];
         if($c1>="\xc0"){ //Should be converted to UTF8, if it's not UTF8 already
-          $c2 = $i+1 >= $max? "\x00" : $text{$i+1};
-          $c3 = $i+2 >= $max? "\x00" : $text{$i+2};
-          $c4 = $i+3 >= $max? "\x00" : $text{$i+3};
+          $c2 = $i+1 >= $max? "\x00" : $text[$i+1];
+          $c3 = $i+2 >= $max? "\x00" : $text[$i+2];
+          $c4 = $i+3 >= $max? "\x00" : $text[$i+3];
             if($c1 >= "\xc0" & $c1 <= "\xdf"){ //looks like 2 bytes UTF8
                 if($c2 >= "\x80" && $c2 <= "\xbf"){ //yeah, almost sure it's UTF8 already
                     $buf .= $c1 . $c2;
@@ -230,7 +230,7 @@ class Encoding {
                     $cc2 = (($c1 & "\x3f") | "\x80");
                     $buf .= $cc1 . $cc2;
             }
-        } elseif(($c1 & "\xc0") == "\x80"){ // needs conversion
+        } elseif(($c1 & "\xc0") === "\x80"){ // needs conversion
               if(isset(self::$win1252ToUtf8[ord($c1)])) { //found in Windows-1252 special cases
                   $buf .= self::$win1252ToUtf8[ord($c1)];
               } else {
@@ -296,7 +296,7 @@ class Encoding {
   }
 
   static function removeBOM($str=""){
-    if(substr($str, 0,3) == pack("CCC",0xef,0xbb,0xbf)) {
+    if(substr($str, 0,3) === pack("CCC",0xef,0xbb,0xbf)) {
       $str=substr($str, 3);
     }
     return $str;
@@ -333,7 +333,7 @@ class Encoding {
   public static function encode($encodingLabel, $text)
   {
     $encodingLabel = self::normalizeEncoding($encodingLabel);
-    if($encodingLabel == 'ISO-8859-1') return self::toLatin1($text);
+    if($encodingLabel === 'ISO-8859-1') return self::toLatin1($text);
     return self::toUTF8($text);
   }
 
@@ -344,7 +344,7 @@ class Encoding {
          str_replace(array_keys(self::$utf8ToWin1252), array_values(self::$utf8ToWin1252), self::toUTF8($text))
        );
     } else {
-       $o = iconv("UTF-8", "Windows-1252" . ($option == self::ICONV_TRANSLIT ? '//TRANSLIT' : ($option == self::ICONV_IGNORE ? '//IGNORE' : '')), $text);
+       $o = iconv("UTF-8", "Windows-1252" . ($option === self::ICONV_TRANSLIT ? '//TRANSLIT' : ($option === self::ICONV_IGNORE ? '//IGNORE' : '')), $text);
     }
     return $o;
   }

@@ -283,7 +283,6 @@ class Encoding {
       $last = $text;
       $text = self::toUTF8(static::utf8_decode($text, $option));
     }
-    $text = self::toUTF8(static::utf8_decode($text, $option));
     return $text;
   }
 

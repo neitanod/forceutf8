@@ -41,9 +41,9 @@ namespace ForceUTF8;
 
 class Encoding {
 
-  const ICONV_TRANSLIT = "TRANSLIT";
-  const ICONV_IGNORE = "IGNORE";
-  const WITHOUT_ICONV = "";
+  const ICONV_TRANSLIT = 1;
+  const ICONV_IGNORE = 2;
+  const WITHOUT_ICONV = 4;
 
   protected static $win1252ToUtf8 = array(
         128 => "\xe2\x82\xac",
@@ -199,7 +199,7 @@ class Encoding {
           $c3 = $i+2 >= $max? "\x00" : $text[$i+2];
           $c4 = $i+3 >= $max? "\x00" : $text[$i+3];
             if($c1 >= "\xc0" & $c1 <= "\xdf"){ //looks like 2 bytes UTF8
-                if($c2 >= "\x80" && $c2 <= "\xbf"){ //yeah, almost sure it's UTF8 already
+                if($c2 < "\x80"){ //yeah, almost sure it's UTF8 already
                     $buf .= $c1 . $c2;
                     $i++;
                 } else { //not valid UTF8.  Convert it.
@@ -337,14 +337,24 @@ class Encoding {
     return self::toUTF8($text);
   }
 
-  protected static function utf8_decode($text, $option = self::WITHOUT_ICONV)
+  protected static function utf8_decode($text, $flags = self::WITHOUT_ICONV)
   {
-    if ($option == self::WITHOUT_ICONV || !function_exists('iconv')) {
+    if ($flags & self::WITHOUT_ICONV || !function_exists('iconv')) {
        $o = utf8_decode(
          str_replace(array_keys(self::$utf8ToWin1252), array_values(self::$utf8ToWin1252), self::toUTF8($text))
        );
     } else {
-       $o = iconv("UTF-8", "Windows-1252" . ($option === self::ICONV_TRANSLIT ? '//TRANSLIT' : ($option === self::ICONV_IGNORE ? '//IGNORE' : '')), $text);
+       $outCharsetParams = '';
+
+            if ($flags & self::ICONV_TRANSLIT) {
+                $outCharsetParams .= '//TRANSLIT';
+            }
+
+            if ($flags & self::ICONV_IGNORE) {
+                $outCharsetParams .= '//IGNORE';
+            }
+
+            $o = iconv("UTF-8", "Windows-1252" . $outCharsetParams, $text);
     }
     return $o;
   }

@@ -97,5 +97,8 @@ Test::identical("fixUTF8() Example 3 still working.",
 Test::identical("fixUTF8() Example 4 still working.",
   Encoding::fixUTF8("FÃÂÂÂÂ©dÃÂÂÂÂ©ration Camerounaise de Football\n"),
   "Fédération Camerounaise de Football\n");
+Test::identical("fixUTF8() Example 5 still working.",
+    Encoding::fixUTF8("À \n"),
+    "À \n");
 
 Test::totals();

@@ -17,5 +17,16 @@
         "psr-0": {
             "ForceUTF8\\": "src/"
         }
+    },
+    "scripts" : {
+        "build": [
+            "@lint",
+            "@test"
+        ],
+        "lint" : "@php vendor/bin/parallel-lint src",
+        "test" : "@php test/ForceUTF8Test.php"
+    },
+    "require-dev": {
+        "php-parallel-lint/php-parallel-lint": "^1.3"
     }
 }

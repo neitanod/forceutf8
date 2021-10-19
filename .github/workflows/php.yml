@@ -1,0 +1,32 @@
+name: GitHub Action
+on:
+  push:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy: 
+      matrix:
+        php-versions: ["5.6", "7.0", "7.1", "7.2", "7.4", "8.0" ]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: setup php
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-versions }}
+        extensions: intl, iconv, mbstring
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate --strict
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
+
+    - name: Run linter 
+      run: composer lint
+      
+    - name: Run tests
+      run: composer test

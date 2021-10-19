@@ -292,7 +292,7 @@ class Encoding {
    */
   static function toLatin1($text, $option = self::WITHOUT_ICONV) {
     return self::toWin1252($text, $option);
-
+  }
 
   /**
    * @param array|string $text

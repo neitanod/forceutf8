@@ -279,6 +279,7 @@ class Encoding {
     }
 
     $last = "";
+    $text = self::replEnie($text);
     while($last <> $text){
       $last = $text;
       $text = self::toUTF8(static::utf8_decode($text, $option));
@@ -347,5 +348,11 @@ class Encoding {
        $o = iconv("UTF-8", "Windows-1252" . ($option === self::ICONV_TRANSLIT ? '//TRANSLIT' : ($option === self::ICONV_IGNORE ? '//IGNORE' : '')), $text);
     }
     return $o;
+  }
+
+  //replace ï¿½ with latin character Ñ or ñ
+  public static function replEnie($str=""){
+    $newstr=preg_replace('/\x{EF}\x{BF}\x{BD}/u', 'Ñ', iconv(mb_detect_encoding($str), 'UTF-8', $str));
+    return $newstr;
   }
 }

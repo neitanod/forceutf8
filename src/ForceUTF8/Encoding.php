@@ -203,7 +203,7 @@ class Encoding {
                     $buf .= $c1 . $c2;
                     $i++;
                 } else { //not valid UTF8.  Convert it.
-                    $cc1 = (chr(ord($c1) / 64) | "\xc0");
+                    $cc1 = (chr(intdiv(ord($c1), 64)) | "\xc0");
                     $cc2 = ($c1 & "\x3f") | "\x80";
                     $buf .= $cc1 . $cc2;
                 }
@@ -212,7 +212,7 @@ class Encoding {
                     $buf .= $c1 . $c2 . $c3;
                     $i = $i + 2;
                 } else { //not valid UTF8.  Convert it.
-                    $cc1 = (chr(ord($c1) / 64) | "\xc0");
+                    $cc1 = (chr(intdiv(ord($c1), 64)) | "\xc0");
                     $cc2 = ($c1 & "\x3f") | "\x80";
                     $buf .= $cc1 . $cc2;
                 }
@@ -221,12 +221,12 @@ class Encoding {
                     $buf .= $c1 . $c2 . $c3 . $c4;
                     $i = $i + 3;
                 } else { //not valid UTF8.  Convert it.
-                    $cc1 = (chr(ord($c1) / 64) | "\xc0");
+                    $cc1 = (chr(intdiv(ord($c1), 64)) | "\xc0");
                     $cc2 = ($c1 & "\x3f") | "\x80";
                     $buf .= $cc1 . $cc2;
                 }
             } else { //doesn't look like UTF8, but should be converted
-                    $cc1 = (chr(ord($c1) / 64) | "\xc0");
+                    $cc1 = (chr(intdiv(ord($c1), 64)) | "\xc0");
                     $cc2 = (($c1 & "\x3f") | "\x80");
                     $buf .= $cc1 . $cc2;
             }
@@ -234,7 +234,7 @@ class Encoding {
               if(isset(self::$win1252ToUtf8[ord($c1)])) { //found in Windows-1252 special cases
                   $buf .= self::$win1252ToUtf8[ord($c1)];
               } else {
-                $cc1 = (chr(ord($c1) / 64) | "\xc0");
+                $cc1 = (chr(intdiv(ord($c1), 64)) | "\xc0");
                 $cc2 = (($c1 & "\x3f") | "\x80");
                 $buf .= $cc1 . $cc2;
               }

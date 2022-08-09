@@ -1,0 +1,336 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:UTF8FixWin1252Chars\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:UTF8FixWin1252Chars\\(\\) has parameter \\$text with no type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:encode\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:encode\\(\\) has parameter \\$encodingLabel with no type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:encode\\(\\) has parameter \\$text with no type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:fixUTF8\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:fixUTF8\\(\\) has parameter \\$option with no type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:fixUTF8\\(\\) has parameter \\$text with no type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:normalizeEncoding\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:normalizeEncoding\\(\\) has parameter \\$encodingLabel with no type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:removeBOM\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:removeBOM\\(\\) has parameter \\$str with no type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:strlen\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:strlen\\(\\) has parameter \\$text with no type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:toISO8859\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:toISO8859\\(\\) has parameter \\$option with no type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:toISO8859\\(\\) has parameter \\$text with no type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:toLatin1\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:toLatin1\\(\\) has parameter \\$option with no type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:toLatin1\\(\\) has parameter \\$text with no type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:toUTF8\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:toUTF8\\(\\) has parameter \\$text with no type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:toWin1252\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:toWin1252\\(\\) has parameter \\$option with no type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:toWin1252\\(\\) has parameter \\$text with no type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:utf8_decode\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:utf8_decode\\(\\) has parameter \\$option with no type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Method ForceUTF8\\\\Encoding\\:\\:utf8_decode\\(\\) has parameter \\$text with no type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Property ForceUTF8\\\\Encoding\\:\\:\\$brokenUtf8ToUtf8 has no type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Property ForceUTF8\\\\Encoding\\:\\:\\$utf8ToWin1252 has no type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Property ForceUTF8\\\\Encoding\\:\\:\\$win1252ToUtf8 has no type specified\\.$#"
+			count: 1
+			path: src/ForceUTF8/Encoding.php
+
+		-
+			message: "#^Function test_arrays_are_different\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/ForceUTF8Test.php
+
+		-
+			message: "#^Function test_double_encoded_arrays_are_different\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/ForceUTF8Test.php
+
+		-
+			message: "#^Function test_double_encoded_arrays_fix\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/ForceUTF8Test.php
+
+		-
+			message: "#^Function test_encoding_of_arrays\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/ForceUTF8Test.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function utf8_encode expects string, string\\|false given\\.$#"
+			count: 8
+			path: test/ForceUTF8Test.php
+
+		-
+			message: "#^Method Test\\:\\:character\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:character\\(\\) has parameter \\$char with no type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:failed\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:failed\\(\\) has parameter \\$test_name with no type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:identical\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:identical\\(\\) has parameter \\$expected with no type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:identical\\(\\) has parameter \\$result with no type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:identical\\(\\) has parameter \\$test_name with no type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:is\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:is\\(\\) has parameter \\$expected with no type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:is\\(\\) has parameter \\$result with no type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:is\\(\\) has parameter \\$test_name with no type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:line\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:line\\(\\) has parameter \\$msg with no type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:not\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:not\\(\\) has parameter \\$expected with no type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:not\\(\\) has parameter \\$result with no type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:not\\(\\) has parameter \\$test_name with no type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:passed\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:passed\\(\\) has parameter \\$test_name with no type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:totals\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:true\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:true\\(\\) has parameter \\$result with no type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Method Test\\:\\:true\\(\\) has parameter \\$test_name with no type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Property Test\\:\\:\\$failed has no type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Property Test\\:\\:\\$last_echoed has no type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Property Test\\:\\:\\$passed has no type specified\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Static method Test\\:\\:line\\(\\) is unused\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Unsafe call to private method Test\\:\\:character\\(\\) through static\\:\\:\\.$#"
+			count: 1
+			path: test/Test.class.php
+
+		-
+			message: "#^Unsafe call to private method Test\\:\\:failed\\(\\) through static\\:\\:\\.$#"
+			count: 3
+			path: test/Test.class.php
+
+		-
+			message: "#^Unsafe call to private method Test\\:\\:passed\\(\\) through static\\:\\:\\.$#"
+			count: 3
+			path: test/Test.class.php

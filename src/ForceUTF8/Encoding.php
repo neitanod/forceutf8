@@ -203,7 +203,7 @@ class Encoding {
                     $buf .= $c1 . $c2;
                     $i++;
                 } else { //not valid UTF8.  Convert it.
-                    $cc1 = (chr(ord($c1) / 64) | "\xc0");
+                    $cc1 = (chr((int) (ord($c1) / 64)) | "\xc0");
                     $cc2 = ($c1 & "\x3f") | "\x80";
                     $buf .= $cc1 . $cc2;
                 }
@@ -212,7 +212,7 @@ class Encoding {
                     $buf .= $c1 . $c2 . $c3;
                     $i = $i + 2;
                 } else { //not valid UTF8.  Convert it.
-                    $cc1 = (chr(ord($c1) / 64) | "\xc0");
+                    $cc1 = (chr((int) (ord($c1) / 64)) | "\xc0");
                     $cc2 = ($c1 & "\x3f") | "\x80";
                     $buf .= $cc1 . $cc2;
                 }

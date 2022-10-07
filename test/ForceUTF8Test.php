@@ -1,8 +1,15 @@
 <?php
+$errors = 0;
+
+set_error_handler(function () use (&$errors) {
+    $errors++;
+}, E_ALL);
+
 require_once(dirname(__FILE__)."/Test.class.php");
 require_once(dirname(dirname(__FILE__))."/src/ForceUTF8/Encoding.php");
 
 use \ForceUTF8\Encoding;
+
 
 // Test the testing class itself.
 Test::is("'yes' is true", 'yes', true);
@@ -97,5 +104,8 @@ Test::identical("fixUTF8() Example 3 still working.",
 Test::identical("fixUTF8() Example 4 still working.",
   Encoding::fixUTF8("FÃÂÂÂÂ©dÃÂÂÂÂ©ration Camerounaise de Football\n"),
   "Fédération Camerounaise de Football\n");
+
+
+Test::is('fixUTF8() does not generate an error', $errors, 0);
 
 Test::totals();

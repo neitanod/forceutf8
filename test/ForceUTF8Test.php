@@ -1,8 +1,13 @@
 <?php
 $errors = 0;
 
-set_error_handler(function () use (&$errors) {
+function __utf8_encode($string, $from = 'auto') {
+    return mb_convert_encoding($string, 'UTF-8', $from);
+}
+
+set_error_handler(function ($a, $b) use (&$errors) {
     $errors++;
+    var_dump($b);;
 }, E_ALL);
 
 require_once(dirname(__FILE__)."/Test.class.php");
@@ -59,17 +64,17 @@ Test::identical("fixUTF8() maintains UTF-8 string.",
 
 Test::not("An UTF-8 double encoded string differs from a correct UTF-8 string.",
   file_get_contents(dirname(__FILE__)."/data/test1.txt"),
-  utf8_encode(file_get_contents(dirname(__FILE__)."/data/test1.txt")));
+  __utf8_encode(file_get_contents(dirname(__FILE__)."/data/test1.txt"), 'ISO-8859-1'));
 
 Test::identical("fixUTF8() reverts to UTF-8 a double encoded string.",
   file_get_contents(dirname(__FILE__)."/data/test1.txt"),
-  Encoding::fixUTF8(utf8_encode(file_get_contents(dirname(__FILE__)."/data/test1.txt"))));
+  Encoding::fixUTF8(__utf8_encode(file_get_contents(dirname(__FILE__)."/data/test1.txt"),'ISO-8859-1')));
 
 function test_double_encoded_arrays_are_different(){
   $arr1 = array(
-    utf8_encode(file_get_contents(dirname(__FILE__)."/data/test1Latin.txt")),
-    utf8_encode(file_get_contents(dirname(__FILE__)."/data/test1.txt")),
-    utf8_encode(file_get_contents(dirname(__FILE__)."/data/test1Latin.txt")));
+    __utf8_encode(file_get_contents(dirname(__FILE__)."/data/test1Latin.txt")),
+    __utf8_encode(file_get_contents(dirname(__FILE__)."/data/test1.txt")),
+    __utf8_encode(file_get_contents(dirname(__FILE__)."/data/test1Latin.txt")));
   $arr2 = array(
     file_get_contents(dirname(__FILE__)."/data/test1.txt"),
     file_get_contents(dirname(__FILE__)."/data/test1.txt"),
@@ -79,9 +84,9 @@ function test_double_encoded_arrays_are_different(){
 
 function test_double_encoded_arrays_fix(){
   $arr1 = array(
-    utf8_encode(file_get_contents(dirname(__FILE__)."/data/test1Latin.txt")),
-    utf8_encode(file_get_contents(dirname(__FILE__)."/data/test1.txt")),
-    utf8_encode(file_get_contents(dirname(__FILE__)."/data/test1Latin.txt")));
+    __utf8_encode(file_get_contents(dirname(__FILE__)."/data/test1Latin.txt"), 'ISO-8859-1'),
+    __utf8_encode(file_get_contents(dirname(__FILE__)."/data/test1.txt"), 'ISO-8859-1'),
+    __utf8_encode(file_get_contents(dirname(__FILE__)."/data/test1Latin.txt"), 'ISO-8859-1'));
   $arr2 = array(
     file_get_contents(dirname(__FILE__)."/data/test1.txt"),
     file_get_contents(dirname(__FILE__)."/data/test1.txt"),

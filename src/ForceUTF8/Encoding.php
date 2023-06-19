@@ -340,12 +340,39 @@ class Encoding {
   protected static function utf8_decode($text, $option = self::WITHOUT_ICONV)
   {
     if ($option == self::WITHOUT_ICONV || !function_exists('iconv')) {
-       $o = utf8_decode(
-         str_replace(array_keys(self::$utf8ToWin1252), array_values(self::$utf8ToWin1252), self::toUTF8($text))
-       );
+        $o =self::php_utf8_decode(str_replace(array_keys(self::$utf8ToWin1252), array_values(self::$utf8ToWin1252), self::toUTF8($text)));
     } else {
        $o = iconv("UTF-8", "Windows-1252" . ($option === self::ICONV_TRANSLIT ? '//TRANSLIT' : ($option === self::ICONV_IGNORE ? '//IGNORE' : '')), $text);
     }
     return $o;
   }
+
+    public static function php_utf8_decode(string $string): string {
+        $s = (string) $string;
+        $len = \strlen($s);
+
+        for ($i = 0, $j = 0; $i < $len; ++$i, ++$j) {
+            switch ($s[$i] & "\xF0") {
+                case "\xC0":
+                case "\xD0":
+                    $c = (\ord($s[$i] & "\x1F") << 6) | \ord($s[++$i] & "\x3F");
+                    $s[$j] = $c < 256 ? \chr($c) : '?';
+                    break;
+
+                case "\xF0":
+                    ++$i;
+                // no break
+
+                case "\xE0":
+                    $s[$j] = '?';
+                    $i += 2;
+                    break;
+
+                default:
+                    $s[$j] = $s[$i];
+            }
+        }
+
+        return substr($s, 0, $j);
+    }
 }
